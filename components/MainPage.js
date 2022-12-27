@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, TouchableOpacity, Image} from "react-native";
+import {View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground} from "react-native";
 import {useEffect, useState} from "react";
 import {get, ref, getDatabase, child} from "firebase/database";
 import {getTypeById, Account} from "../classes/Account";
@@ -13,17 +13,16 @@ export default function MainPage({navigation, route})
 
     return <View style={styles.container}>
         <View style={styles.header}>
-            <Image source={require('../resources/CityBG.png')} style={styles.cityImage}/>
-            <Text style={{fontWeight: 'bold', fontFamily: '',fontSize: 31, color: 'white', marginTop: 40, marginRight: 20}}>,{account.firstName}</Text>
-            <Text style={{fontWeight: 'normal', fontSize: 31, color: 'white', marginRight: 20}}>כיף שחזרת</Text>
+            <Text style={{fontWeight: 'bold', fontFamily: '',fontSize: 31, color: 'white', marginTop: 40, marginRight: 20, zIndex: 1}}>,{account.firstName}</Text>
+            <Text style={{fontWeight: 'normal', fontSize: 31, color: 'white', marginRight: 20, zIndex: 1}}>כיף שחזרת</Text>
         </View>
-        <Image style={styles.carImage} source={require('../resources/Car.png')}/>
+        <Image source={require('../resources/Img1.png')} style={styles.cityImage}/>
         <View style={styles.body}>
             <TouchableOpacity style={styles.button}>
-                <View>
+                <ImageBackground source={require('../resources/DriveBackgroundButton.png')} style={styles.button}>
                     <Text style={{fontWeight: 'bold', fontSize: 30, color: '#000'}}>יאללה</Text>
                     <Text style={{fontSize: 30, color: '#000'}}>נוסעים!</Text>
-                </View>
+                </ImageBackground>
             </TouchableOpacity>
         </View>
         <View style={styles.footer}>
@@ -82,7 +81,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     },
     button: {
-        backgroundColor: '#58b69a',
         height: 160,
         width: 160,
         borderRadius: 100,
@@ -101,10 +99,12 @@ const styles = StyleSheet.create({
     },
     cityImage: {
         position: 'absolute',
-        height: 280,
-        width: '100%',
-        borderBottomRightRadius: 30,
-        borderBottomLeftRadius: 30,
-        zIndex: -1,
+        resizeMode: 'contain',
+        left: 0,
+        right: 0,
+        top: 140,
+        height: 150,
+        width: 'auto',
+        zIndex: 1
     }
 });
