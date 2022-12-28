@@ -2,6 +2,7 @@ import {View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground} from "
 import {useEffect, useState} from "react";
 import {get, ref, getDatabase, child} from "firebase/database";
 import {getTypeById, Account} from "../classes/Account";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function MainPage({navigation, route})
 {
@@ -13,6 +14,9 @@ export default function MainPage({navigation, route})
 
     return <View style={styles.container}>
         <View style={styles.header}>
+            <TouchableOpacity style={{position: 'absolute', left: 10, top: 30}} onPress={() => logout(navigation)}>
+                <Text style={{color: '#fff'}}>Log out</Text>
+            </TouchableOpacity>
             <Text style={{fontWeight: 'bold', fontFamily: '',fontSize: 31, color: 'white', marginTop: 40, marginRight: 20, zIndex: 1}}>,{account.firstName}</Text>
             <Text style={{fontWeight: 'normal', fontSize: 31, color: 'white', marginRight: 20, zIndex: 1}}>כיף שחזרת</Text>
         </View>
@@ -39,6 +43,13 @@ export default function MainPage({navigation, route})
             </View>
         </View>
     </View>
+}
+
+async function logout(navigation)
+{
+    AsyncStorage.removeItem('id').then(() => {
+        navigation.navigate('ChoosePage');
+    });
 }
 
 async function getAccount(id, setAccount) {
