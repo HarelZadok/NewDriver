@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground} from "react-native";
+import {View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground, StatusBar} from "react-native";
 import {useEffect, useState} from "react";
 import {get, ref, getDatabase, child} from "firebase/database";
 import {getTypeById, Account} from "../classes/Account";
@@ -14,10 +14,10 @@ export default function MainPage({navigation, route})
 
     return <View style={styles.container}>
         <View style={styles.header}>
-            <TouchableOpacity style={{position: 'absolute', left: 10, top: 30}} onPress={() => logout(navigation)}>
+            <TouchableOpacity style={{position: 'absolute', left: 10, top: (StatusBar.currentHeight !== null? StatusBar.currentHeight : 40) + 10}} onPress={() => logout(navigation)}>
                 <Text style={{color: '#fff'}}>Log out</Text>
             </TouchableOpacity>
-            <Text style={{fontWeight: 'bold', fontFamily: '',fontSize: 31, color: 'white', marginTop: 40, marginRight: 20, zIndex: 1}}>,{account.firstName}</Text>
+            <Text style={{fontWeight: 'bold', fontFamily: '', fontSize: 31, color: 'white', marginTop: (StatusBar.currentHeight !== null? StatusBar.currentHeight : 40) + 10, marginRight: 20, zIndex: 1}}>,{account.firstName}</Text>
             <Text style={{fontWeight: 'normal', fontSize: 31, color: 'white', marginRight: 20, zIndex: 1}}>כיף שחזרת</Text>
         </View>
         <Image source={require('../resources/Img1.png')} style={styles.cityImage}/>

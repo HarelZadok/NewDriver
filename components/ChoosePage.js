@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, Image, StyleSheet} from "react-native";
+import {View, Text, TouchableOpacity, Image, StyleSheet, StatusBar} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function ChoosePage({navigation}) {
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         borderColor: '#000',
         borderWidth: 3,
         marginRight: 20,
-        marginTop: 40,
+        marginTop: (StatusBar.currentHeight !== null? StatusBar.currentHeight : 40) + 20,
     },
     button: {
         backgroundColor: '#eee',

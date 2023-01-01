@@ -7,8 +7,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 let id, firstName, lastName, phone, email, password, licenceNumber, licenceIssueDate;
 
-
-
 export default function RegisterPage({navigation, route}) {
     const [modalVisible, setModalVisible] = useState(false)
     const [date, setDate] = useState(getToday())
