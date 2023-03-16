@@ -5,7 +5,12 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "02bd45e8-30c0-469f-a839-8d876810134d"
+      }
+    }
   },
   "name": "NewDriver"
 }

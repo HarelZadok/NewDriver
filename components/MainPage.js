@@ -14,10 +14,10 @@ export default function MainPage({navigation, route})
 
     return <View style={styles.container}>
         <View style={styles.header}>
-            <TouchableOpacity style={{position: 'absolute', left: 10, top: (StatusBar.currentHeight !== null? StatusBar.currentHeight : 40) + 10}} onPress={() => logout(navigation)}>
+            <TouchableOpacity style={{position: 'absolute', left: 10, top: 30}} onPress={() => logout(navigation)}>
                 <Text style={{color: '#fff'}}>Log out</Text>
             </TouchableOpacity>
-            <Text style={{fontWeight: 'bold', fontFamily: '', fontSize: 31, color: 'white', marginTop: (StatusBar.currentHeight !== null? StatusBar.currentHeight : 40) + 10, marginRight: 20, zIndex: 1}}>,{account.firstName}</Text>
+            <Text style={{fontWeight: 'bold', fontFamily: '', fontSize: 31, color: 'white', marginTop: (StatusBar.currentHeight !== null? StatusBar.currentHeight : 40) + 10, marginRight: 20, zIndex: 1}}>{account.firstName},</Text>
             <Text style={{fontWeight: 'normal', fontSize: 31, color: 'white', marginRight: 20, zIndex: 1}}>כיף שחזרת</Text>
         </View>
         <Image source={require('../resources/Img1.png')} style={styles.cityImage}/>
@@ -30,7 +30,7 @@ export default function MainPage({navigation, route})
             </TouchableOpacity>
         </View>
         <View style={styles.footer}>
-            <View style={{flexDirection: 'row-reverse', backgroundColor: '#fff', width: '70%', height: 55, borderRadius: 100, justifyContent: 'space-between', alignItems: 'flex-end', paddingHorizontal: 20, paddingBottom: 13}}>
+            <View style={{flexDirection: 'row-reverse', backgroundColor: '#eee', width: '70%', height: 55, borderRadius: 100, justifyContent: 'space-between', alignItems: 'flex-end', paddingHorizontal: 20, paddingBottom: 13}}>
                 <TouchableOpacity>
                     <Text style={{fontSize: 12, color: '#777', fontWeight: 'bold'}}>בית</Text>
                 </TouchableOpacity>
@@ -70,6 +70,7 @@ async function getAccount(id, setAccount) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#fff',
     },
     header: {
         width: '100%',
